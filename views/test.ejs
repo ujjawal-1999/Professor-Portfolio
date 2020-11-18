@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form action="/admin/upload/book" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" />
-        <input type="file" name="cover" />
-        <input type="file" name="book" />
-        <button type="submit">Submit</button>
+  </head>
+  <body>
+    <form
+      action="/admin/upload/book"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="name" />
+      <input type="text" name="description" />
+      <input type="file" name="cover" />
+      <input type="file" name="book" />
+      <button type="submit">Submit</button>
     </form>
-    
-</body>
+    <form
+      action="/admin/book/edit/5fb56f23103bde4fbd3c92be"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="name" />
+      <input type="text" name="description" />
+      <input type="file" name="cover" />
+      <input type="file" name="book" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
 </html>
