@@ -1,0 +1,166 @@
+.grid-item {
+  color: #3626a7;;
+  font-size: 1em;
+  /* font-weight: 700; */
+}
+
+a:link {
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .main {
+    margin: 0;
+    padding: 0;
+    background-color: #070707;
+  }
+  .grid-item {
+    margin-top: 20px;
+  }
+  .item {
+    width: 90% !important;
+  }
+}
+
+.items {
+  position: relative;
+  width: 100%;
+  transition: all 0.2s;
+  transform: scale(0.98);
+  will-change: transform;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.items::-webkit-scrollbar {
+  /* WebKit */
+  width: 0px;
+}
+
+.main::-webkit-scrollbar {
+  /* WebKit */
+  width: 0px;
+}
+
+.items.active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}
+
+.items .before {
+  left: 0;
+  background: linear-gradient(
+    linear,
+    left top,
+    right top,
+    from(#fafafa),
+    to(rgba(250, 250, 250, 0))
+  );
+}
+
+.item1 {
+  background-image: url("../image/events/1.jpg");
+  background-size: cover;
+}
+
+.item2 {
+  background-image: url("../image/events/2.jpg");
+  background-size: cover;
+}
+
+.item3 {
+  background-image: url("../image/events/3.jpg");
+  background-size: cover;
+}
+
+.item4 {
+  background-image: url("../image/events/4.jpg");
+  background-size: cover;
+}
+
+.item5 {
+  background-image: url("../image/events/1.jpg");
+  background-size: cover;
+}
+
+.item6 {
+  background-image: url("../image/events/2.jpg");
+  background-size: cover;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: initial;
+  align-content: center;
+  height: 44vh;
+  width: 25%;
+  max-width: 400px;
+  margin: 2em 1em;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 5%;
+  transform: translateY(0px);
+  transition: ease 0.5s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.068);
+  background-color:aliceblue;
+  padding-top: 1rem;
+}
+@media screen and (max-width: 500px) {
+  .item {
+    min-height: 200px;
+    min-width: 200px;
+  }
+}
+
+.item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.397);
+  transform: translateY(-10px);
+}
+
+/* Main Body */
+
+#book-cover{
+    width: 100%;
+}
+.book-img{
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.book-name {
+  font-family: var(--global-font);
+  padding: 10px;
+  font-size: 30px;
+  overflow: hidden;
+}
+p {
+  font-family: var(--global-font);
+}
+
+.book-price {
+  color: var(--Grey-dark-1);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.book-description {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
+  overflow: hidden;
+}
