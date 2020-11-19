@@ -8,6 +8,7 @@
   />
   <link rel="stylesheet" href="../public/css/main.css" />
   <link rel="stylesheet" href="../public/css/admin.css" />
+  <link rel="stylesheet" href="../public/css/modal.css" />
   <link rel="icon" href="favicon.ico" />
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Mono:700|Raleway:100"
@@ -15,6 +16,158 @@
   />
 </head>
 <body>
+  <!-- Modals -->
+  <!-- User Form -->
+  <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>UserName</h3>
+      <h4>Please enter new Username</h4>
+      <fieldset>
+        <input
+          type="text"
+          placeholder="Username"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Please enter new password</h4>
+      <fieldset>
+        <input
+          type="text"
+          placeholder="Password"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </form>
+  </div>
+  <!-- End of User Form -->
+  <!-- Profile picture form -->
+  <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>Profile Picture</h3>
+      <h4>Please upload a profile picture</h4>
+      <fieldset>
+        <input
+          type="file"
+          tabindex="1"
+          required
+          autofocus
+        />
+         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+  <!-- End of Profile picture form -->
+  <!-- Intro Text Form -->
+  <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>Intro</h3>
+      <h4>Please enter your intro</h4>
+      <fieldset>
+        <textarea placeholder="Intro" name="Intro" id="" cols="30" rows="10"></textarea>
+         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+  <!-- End of Intro text Form -->
+  <!-- Profile New Field Form -->
+  <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>Profile Field</h3>
+      <h4>Please enter Field Name</h4>
+      <fieldset>
+        <input
+          placeholder="Field Name"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Please enter Field Description</h4>
+      <fieldset>
+        <textarea placeholder="Field Description" name="Description" id="" cols="30" rows="10"></textarea>
+         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+  <!-- End of Profile New Field Form -->
+  <!-- Profile Field Edit Form -->
+    <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>Field Name</h3>
+      <h4>Please enter new Field name</h4>
+      <fieldset>
+        <input
+          placeholder="Field Name"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Please enter new Field Description</h4>
+      <fieldset>
+       <textarea placeholder="Field Description" name="Description" id="" cols="30" rows="10"></textarea>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Update</button>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Delete</button>
+      </fieldset>
+    </form>
+  </div>
+  <!--End of Profile Field Edit Form -->
+  <!-- Contact Details Form -->
+  <div class="form-container">
+    <form id="form" action="" method="post">
+      <h3>Contact Details</h3>
+      <h4>Enter Email ID</h4>
+      <fieldset>
+        <input
+          placeholder="Email ID"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Enter Phone Number</h4>
+      <fieldset>
+        <input
+          placeholder="Phone Number"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Enter Facebook Profile Link</h4>
+      <fieldset>
+        <input
+          placeholder="Facebook Profile Link"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <h4>Enter LinkedIn Profile Link</h4>
+      <fieldset>
+        <input
+          placeholder="LinkedIn Profile Link"
+          type="text"
+          tabindex="1"
+          required
+          autofocus
+        />
+      </fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </form>
+  </div>
+  <!-- End of Contact Details Form -->
+  <!-- end of Modals -->
   <header class="main-header" id="home">
     <nav class="header-container clearfix">
       <ul class="main-nav">

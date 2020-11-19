@@ -22,8 +22,8 @@
 }
 #contact-button {
   width: 3%;
-  margin-top: 11vh;
-  margin-left: 62vw;
+  margin-top: 8vh;
+    margin-left: 60vw;
 }
 
 @media screen and (max-width: 1023px) {
@@ -42,7 +42,7 @@
 }
   #contact-button {
     width: 5%;
-    margin-top: 8vh;
+    margin-top: 5vh;
     margin-left: 71vw;
   }
 }
