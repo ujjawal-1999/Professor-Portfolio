@@ -59,6 +59,7 @@ app.use(express.static(publicDirectory));
 //Routes
 const indexRoutes = require("./routes/index");
 const adminRoutes = require("./routes/admin");
+const Admin = require("./models/Admin");
 
 app.use("/", indexRoutes);
 app.use("/admin", adminRoutes);
@@ -67,3 +68,14 @@ app.use("/admin", adminRoutes);
 app.listen(PORT, () => {
   console.log("Server listening on port", PORT);
 });
+
+// const Admin = require('./models/Admin');
+
+// const f = async()=>{
+//     const newUser = await new Admin({
+//       username: 'ujjawal-1999',
+//       password: 'ujjawal1999'
+//     }).save();
+//     console.log(newUser);
+// }
+// f();

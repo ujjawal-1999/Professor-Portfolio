@@ -1,17 +1,22 @@
 const jwt = require("jsonwebtoken");
-const keys = require("../config/key");
+const Admin = require("../models/Admin");
 
 const adminAuth = function (req, res, next) {
   try {
     const token = req.cookies.authorization;
-    const decoded = jwt.verify(token, "JWT-SECRET");
-    const admin = decoded.admin;
-    if (admin !== `${keys.ADMIN_EMAIL}${keys.ADMIN_PASSWORD}`) {
-      throw new Error("Invalid Credentials");
+    if (!token) {
+      throw new Error("User is not logged in");
     }
-    req.token = token;
-
-    next();
+    jwt.verify(token, "JWT-SECRET", async (err, decodedToken) => {
+      if (err) {
+        res.redirect("/admin/login");
+        next();
+      } else {
+        let user = await Admin.findById(decodedToken._id);
+        req.user = user;
+        next();
+      }
+    });
   } catch (error) {
     res.status(401).send({
       error: "Please Login to access the admin routes ",
