@@ -97,9 +97,9 @@ a:link {
   flex-direction: column;
   justify-content: initial;
   align-content: center;
-  height: 44vh;
+  height: 40vh;
   width: 25%;
-  max-width: 400px;
+  max-width: 70%;
   margin: 2em 1em;
   text-align: center;
   overflow: hidden;
@@ -110,10 +110,12 @@ a:link {
   background-color:aliceblue;
   padding-top: 1rem;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .item {
-    min-height: 200px;
-    min-width: 200px;
+    /* min-height: 200px; */
+    height: 45vh;
+    width: 25%;
+    /* min-width: 200px; */
   }
 }
 
@@ -126,7 +128,8 @@ a:link {
 /* Main Body */
 
 #book-cover{
-    width: 100%;
+    width: 50%;
+    object-fit: contain;
 }
 .book-img{
     overflow: hidden;
@@ -149,18 +152,21 @@ p {
   overflow: hidden;
 }
 
-.book-description {
-  margin-left: 15px;
-  margin-right: 15px;
-  font-size: 1rem;
-  overflow: hidden;
-}
-
 .buttons{
+    padding-top: 40px;
     display: flex;
     justify-content: space-around;
 }
 
 .button{
   overflow: hidden;
+}
+
+.add-book{
+  text-decoration: none;
+  color: #87f5fb;
+}
+
+.add-book:hover{
+  color: orange;
 }

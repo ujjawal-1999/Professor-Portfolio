@@ -6,6 +6,7 @@
 body {
   margin: 0 auto;
   font-family: "Fjalla One", sans-serif;
+  background-color: #070707;
 }
 html {
   scroll-behavior: smooth;
@@ -26,15 +27,17 @@ h4,
   font-style: italic;
 }
 .main-nav li {
+  display: inline;
   list-style-type: none;
   margin-bottom: 7px;
-  padding: 20px 0;
+  padding: 20px 20px;
   text-transform: uppercase;
 }
 .main-nav {
   margin-top: 40px;
   margin-right: 20px;
   padding-left: 20px;
+  overflow: hidden;
 }
 .b-name {
   margin: 0;
