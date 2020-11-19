@@ -1,0 +1,68 @@
+.edit {
+  width: 20%;
+}
+
+.edit-button {
+  width: 4%;
+  float: right;
+  z-index: 5;
+  margin-top: 6vh;
+  margin-left: 45vw;
+  position: absolute;
+}
+
+#grid-button {
+      width: 3%;
+    margin-top: -6vh;
+    margin-left: 4vw;
+}
+
+#intro-button {
+  margin-top: 3px;
+}
+#contact-button {
+  width: 3%;
+  margin-top: 11vh;
+  margin-left: 62vw;
+}
+
+@media screen and (max-width: 1023px) {
+  .edit-button {
+    width: 4%;
+    float: right;
+    z-index: 5;
+    margin-top: 6vh;
+    margin-left: 55vw;
+    position: absolute;
+  }
+  #grid-button {
+  width: 4%;
+  margin-top: -6vh;
+  margin-left: 2vw;
+}
+  #contact-button {
+    width: 5%;
+    margin-top: 8vh;
+    margin-left: 71vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .edit-button {
+    width: 8%;
+    float: right;
+    z-index: 5;
+    margin-top: 6vh;
+    margin-left: 67vw;
+    position: absolute;
+  }
+  #grid-button {
+  width: 7%;
+  margin-top: -6vh;
+  margin-left: 2vw;
+}
+  #contact-button {
+    width: 9%;
+    margin-top: 6vh;
+    margin-left: 81vw;
+  }
+}
