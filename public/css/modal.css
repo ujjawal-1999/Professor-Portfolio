@@ -13,20 +13,16 @@
 	text-rendering:optimizeLegibility;
 }
 
-/* body {
-	font-family:"Open Sans", Helvetica, Arial, sans-serif;
-	font-weight:300;
-	font-size: 12px;
-	line-height:30px;
-	color:#777;
-	background:#0CF;
-} */
-
 .form-container {
-	max-width:400px;
-	width:100%;
-	margin:0 auto;
-	position:relative;
+	max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    margin-top: 17vh;
+    margin-left: 40%;
+    z-index: -1;
+	box-shadow: 7px 2px 28px -4px rgba(0,0,0,0.75);
+	opacity: 0;
 }
 
 #form input[type="text"], #form input[type="email"], #form input[type="tel"], #form input[type="url"], #form textarea, #form button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
@@ -34,7 +30,6 @@
 #form {
 	background:#F9F9F9;
 	padding:25px;
-	margin:50px 0;
 }
 
 #form h3 {

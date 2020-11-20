@@ -18,8 +18,9 @@
 <body>
   <!-- Modals -->
   <!-- User Form -->
-  <div class="form-container">
+  <div class="form-container" id="UserForm">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>UserName</h3>
       <h4>Please enter new Username</h4>
       <fieldset>
@@ -46,12 +47,14 @@
   </div>
   <!-- End of User Form -->
   <!-- Profile picture form -->
-  <div class="form-container">
+  <div class="form-container" id="ProfilePicture">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>Profile Picture</h3>
       <h4>Please upload a profile picture</h4>
       <fieldset>
         <input
+        style="margin-bottom: 15px;"
           type="file"
           tabindex="1"
           required
@@ -63,8 +66,9 @@
   </div>
   <!-- End of Profile picture form -->
   <!-- Intro Text Form -->
-  <div class="form-container">
+  <div class="form-container" id="IntroText">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>Intro</h3>
       <h4>Please enter your intro</h4>
       <fieldset>
@@ -75,8 +79,9 @@
   </div>
   <!-- End of Intro text Form -->
   <!-- Profile New Field Form -->
-  <div class="form-container">
+  <div class="form-container" id="ProfileNew">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>Profile Field</h3>
       <h4>Please enter Field Name</h4>
       <fieldset>
@@ -97,8 +102,9 @@
   </div>
   <!-- End of Profile New Field Form -->
   <!-- Profile Field Edit Form -->
-    <div class="form-container">
+    <div class="form-container" id="ProfileEdit">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>Field Name</h3>
       <h4>Please enter new Field name</h4>
       <fieldset>
@@ -120,8 +126,9 @@
   </div>
   <!--End of Profile Field Edit Form -->
   <!-- Contact Details Form -->
-  <div class="form-container">
+  <div class="form-container" id="ContactDetails">
     <form id="form" action="" method="post">
+      <a href="">Back</a>
       <h3>Contact Details</h3>
       <h4>Enter Email ID</h4>
       <fieldset>
@@ -173,14 +180,14 @@
       <ul class="main-nav">
         <li><a class="link1" href="">Home</a></li>
         <li><a class="link2" href="">Books</a></li>
-        <li><a class="link2" href="">Admin</a></li>
+        <li><a class="link2" href="" onclick="userform()">Admin</a></li>
       </ul>
     </nav>
 
     <div class="banner">
       <div class="edit">
         <a href=""
-          ><img src="../public/images/edit.png" alt="" class="edit-button"
+          onclick="profilepicture()"><img src="../public/images/edit.png" alt="" class="edit-button"
         /></a>
       </div>
       <img

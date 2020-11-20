@@ -1,120 +1,137 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8" />
-  <title>Professor's Book</title>
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-  />
-  <link rel="stylesheet" href="../public/css/main.css" />
-  <link rel="stylesheet" href="../public/css/books.css" />
-  <link rel="stylesheet" href="../public/css/modal.css" />
-  <link rel="icon" href="favicon.ico" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Mono:700|Raleway:100"
-    rel="stylesheet"
-  />
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Professor's Book</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/books.css" />
+    <link rel="stylesheet" href="../public/css/modal.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Mono:700|Raleway:100"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Modals -->
-  <!-- New Book Form -->
-  <div class="form-container">
-    <form id="form" action="" method="post">
-      <h3>Add A Book</h3>
-      <h4>Please enter Book name</h4>
-      <fieldset>
-        <input
-          type="text"
-          placeholder="Book Name"
-          tabindex="1"
-          required
-          autofocus
-        />
-      </fieldset>
-      <h4>Please upload Book </h4>
-      <fieldset>
-        <input
-          type="file"
-          tabindex="1"
-          required
-          autofocus
-        />
-      </fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </form>
-  </div>
-  <!--End of  New Book Form -->
-  <!-- Edit Book Form -->
-  <div class="form-container">
-    <form id="form" action="" method="post">
-      <h3>Book Name</h3>
-      <h4>Please enter new Book name</h4>
-      <fieldset>
-        <input
-          type="text"
-          placeholder="Book Name"
-          tabindex="1"
-          required
-          autofocus
-        />
-      </fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Update</button>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Delete</button>
-    </form>
-  </div>
-  <!-- Edit Book FormEnd of Edit Book Form -->
-  <!-- End of Modals -->
-  <header class="main-header" id="home">
-    <nav class="header-container clearfix">
-      <ul class="main-nav">
-        <li><a class="link1" href="#home">Home</a></li>
-        <li><a class="link2" href="#portfolio">Books</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="main" id="portfolio">
-    <section class="books-grid main">
-      <a class="add-book" href=""><span>Add Books</span> </a>
-      <div class="books">
-        <div class="book">
-          <div class="book-img">
-            <img
-              id="book-cover"
-              src="../public/images/book1.jpg"
-            />
-          </div>
-          <div class="book-name">
-            <h4 class="b-name">The End of Me</h4>
-          </div>
-          <div class="buttons">
-            <div class="button">
-              <a href=""><p>Edit</p></a>
+    <!-- New Book Form -->
+    <div class="form-container" id="NewBook">
+      <form id="form" action="" method="post">
+        <a href="">Back</a>
+        <h3>Add A Book</h3>
+        <h4>Please enter Book name</h4>
+        <fieldset>
+          <input
+            type="text"
+            placeholder="Book Name"
+            tabindex="1"
+            required
+            autofocus
+          />
+        </fieldset>
+        <h4>Please upload Book</h4>
+        <fieldset>
+          <input type="file" tabindex="1" required autofocus />
+        </fieldset>
+        <button
+          name="submit"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <!--End of  New Book Form -->
+    <!-- Edit Book Form -->
+    <div class="form-container" id="EditBook">
+      <form id="form" action="" method="post">
+        <a href="">Back</a>
+        <h3>Book Name</h3>
+        <h4>Please enter new Book name</h4>
+        <fieldset>
+          <input
+            type="text"
+            placeholder="Book Name"
+            tabindex="1"
+            required
+            autofocus
+          />
+        </fieldset>
+        <button
+          name="submit"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Update
+        </button>
+        <button
+          name="submit"
+          type="submit"
+          id="contact-submit"
+          data-submit="...Sending"
+        >
+          Delete
+        </button>
+      </form>
+    </div>
+    <!-- Edit Book FormEnd of Edit Book Form -->
+    <!-- End of Modals -->
+    <header class="main-header" id="home">
+      <nav class="header-container clearfix">
+        <ul class="main-nav">
+          <li><a class="link1" href="#home">Home</a></li>
+          <li><a class="link2" href="#portfolio">Books</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main" id="portfolio">
+      <section class="books-grid main">
+        <button class="add-book" onclick="addbooks()">Add Books</button>
+        <div class="books">
+          <div class="book">
+            <div class="book-img">
+              <img id="book-cover" src="../public/images/book1.jpg" />
             </div>
-            <div class="button">
-              <a href=""><p>Delete</p></a>
+            <div class="book-name">
+              <h4 class="b-name">The End of Me</h4>
+            </div>
+            <div class="buttons">
+              <div class="button">
+                <!-- <a href=""><p>Edit</p></a> -->
+                <button class="edit-book" onclick="editbook()">Edit</button>
+              </div>
+              <div class="button">
+                <button class="edit-book">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="book">
+            <div class="book-img">
+              <img id="book-cover" src="../public/images/book2.jpeg" />
+            </div>
+            <div class="book-name">
+              <h4 class="b-name">The Book of Mormon</h4>
+            </div>
+            <div class="buttons">
+              <div class="button">
+                <a href="" onclick="editbook()"><p>Edit</p></a>
+              </div>
+              <div class="button">
+                <a href=""><p>Delete</p></a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="book">
-          <div class="book-img">
-            <img
-              id="book-cover"
-              src="../public/images/book2.jpeg"
-            />
-          </div>
-          <div class="book-name">
-            <h4 class="b-name">The Book of Mormon</h4>
-          </div>
-          <div class="buttons">
-            <div class="button">
-              <a href=""><p>Edit</p></a>
-            </div>
-            <div class="button">
-              <a href=""><p>Delete</p></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</body>
+      </section>
+    </div>
+  <script src="../src/js/modal.js"></script>
+  </body>
+
+</html>
