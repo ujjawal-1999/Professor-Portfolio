@@ -8,17 +8,7 @@ a:link {
 }
 
 @media (max-width: 800px) {
-  .main {
-    margin: 0;
-    padding: 0;
-    background-color: #070707;
-  }
-  .books-grid {
-    margin-top: 20px;
-  }
-  .book {
-    width: 90% !important;
-  }
+  
 }
 
 .books {
@@ -28,10 +18,9 @@ a:link {
   transform: scale(0.98);
   will-change: transform;
   user-select: none;
-  display: flex;
-  justify-content: center;
-  align-books: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: 1fr;
+  margin-left: 13%;
 }
 
 .books::-webkit-scrollbar {
@@ -62,36 +51,23 @@ a:link {
 }
 
 .book {
-  display: flex;
-  flex-direction: column;
   justify-content: initial;
   align-content: center;
-  height: 40vh;
-  width: 25%;
+  height: 36vh;
+  width: 100%;
   max-width: 70%;
   margin: 2em 1em;
   text-align: center;
   overflow: hidden;
-  border-radius: 5%;
   transform: translateY(0px);
   transition: ease 0.5s;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.068);
   background-color: aliceblue;
   padding-top: 1rem;
 }
-@media screen and (max-width: 800px) {
-  .book {
-    /* min-height: 200px; */
-    height: 45vh;
-    width: 25%;
-    /* min-width: 200px; */
-  }
-}
 
 .book:hover {
-  transform: translateY(-1px);
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.397);
-  transform: translateY(-10px);
+  transform: translateX(10px);
 }
 
 /* Main Body */
@@ -103,6 +79,8 @@ a:link {
 .book-img {
   overflow: hidden;
   object-fit: cover;
+  float: left;
+  width: 28%;
 }
 
 .book-name {
@@ -110,7 +88,9 @@ a:link {
   padding: 10px;
   font-size: 30px;
   overflow: hidden;
+  float: left;
 }
+
 p {
   font-family: var(--global-font);
 }
@@ -123,8 +103,11 @@ p {
 
 .buttons {
   padding-top: 40px;
+  padding-bottom: 20px;
   display: flex;
-  justify-content: space-around;
+      justify-content: space-between;
+    margin-top: 17%;
+    margin-right: 47%;
 }
 
 .button {
@@ -137,14 +120,72 @@ p {
   cursor: pointer;
   background-color: #070707;
   border: 0;
+  font-size: 1.3rem;
 }
 .edit-book {
   text-decoration: none;
   color: blue;
   cursor: pointer;
   border: 0;
+  font-size: 1.3rem;
 }
 
 .add-book:hover {
   color: orange;
+}
+
+
+@media screen and (max-width: 768px) {
+  .book-name{
+    float: none;
+  }
+  .buttons{
+    margin-right: 7%;
+  }
+  .book {
+    height: 35vh;
+    width: 100%;
+  }
+  .book-img{
+    width: 50%;
+  }
+  .main {
+    margin: 0;
+    margin-top: 15vh;
+    padding: 0;
+    background-color: #070707;
+  }
+  .books-grid {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width:1024px) and (min-width:769px)
+{
+  .book-img{
+    width: 50%;
+  }
+  .buttons{
+    margin-top: 29%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width:520px)
+{
+  .book-img{
+    width: 100%;
+  }
+  .book{
+    height: 45vh;
+  }
+  .buttons{
+    margin-top: 9%;
+    padding-top: 0;
+    justify-content: space-around;
+    margin-right: 0;
+  }
+  .book:hover {
+  transform: translateY(-10px);
+}
 }

@@ -280,8 +280,8 @@ h2 {
     margin-left: 21vw;
   }
   .main {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 10vh auto;
   }
   figure {
     width: 33.33%;
