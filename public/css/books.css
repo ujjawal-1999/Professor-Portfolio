@@ -8,9 +8,8 @@ a:link {
 }
 
 @media (max-width: 800px) {
-  
 }
-.button-style{
+.button-style {
   color: white;
   font-size: 1.3rem;
   font-weight: 600;
@@ -25,7 +24,7 @@ a:link {
   user-select: none;
   display: grid;
   grid-template-rows: 1fr;
-  margin-left: 13%;
+  margin-left: 11%;
 }
 
 .books::-webkit-scrollbar {
@@ -73,13 +72,18 @@ a:link {
 
 .book:hover {
   transform: translateX(10px);
+  box-shadow: 0px 21px 32px -12px rgba(0, 0, 0, 0.57);
 }
 
 /* Main Body */
 
 #book-cover {
-  width: 50%;
+  width: 87%;
   object-fit: contain;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  overflow: hidden;
 }
 .book-img {
   overflow: hidden;
@@ -88,9 +92,11 @@ a:link {
   width: 30%;
   /* height: 95%; */
 }
-@media screen and (min-width : 768px){
-  .book-img{
+@media screen and (min-width: 768px) {
+  .book-img {
     height: 95%;
+    width: 25%;
+    margin-right: 3%;
   }
 }
 
@@ -100,6 +106,9 @@ a:link {
   font-size: 30px;
   overflow: hidden;
   float: left;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+  font-size: 2.5rem;
 }
 
 p {
@@ -115,26 +124,27 @@ p {
 .buttons {
   padding-top: 40px;
   padding-bottom: 20px;
+  padding-left: 1%;
   display: flex;
-      justify-content: space-between;
-    margin-top: 12%;
-    margin-right: 45%;
+  justify-content: space-between;
+  margin-top: 12%;
+  margin-right: 45%;
 }
 
 .button {
   overflow: hidden;
   background: blueviolet;
-  padding : 10px 20px;
+  padding: 10px 20px;
 }
 
 .add-book {
   text-decoration: none;
-    color: black;
-    cursor: pointer;
-    padding: 10px 20px;
-    background-color: whitesmoke;
-    border: 0;
-    font-size: 1.3rem;
+  color: black;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  border: 0;
+  font-size: 1.3rem;
 }
 .edit-book {
   text-decoration: none;
@@ -149,20 +159,20 @@ p {
   color: orange;
 }
 
-
 @media screen and (max-width: 768px) {
-  .book-name{
+  .book-name {
     float: none;
   }
-  .buttons{
+  .buttons {
     margin-right: 7%;
   }
   .book {
     height: 35vh;
     width: 100%;
   }
-  .book-img{
+  .book-img {
     width: 50%;
+    height: 100%;
   }
   .main {
     margin: 0;
@@ -175,32 +185,37 @@ p {
   }
 }
 
-@media screen and (max-width:1024px) and (min-width:769px)
-{
-  .book-img{
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .book-img {
     width: 50%;
   }
-  .buttons{
-    margin-top: 29%;
-    margin-right: 10%;
+  .buttons {
+    margin-right: 7%;
+    padding-left: 4%;
+  }
+  .book-name {
+    float: none;
   }
 }
 
-@media screen and (max-width:520px)
-{
-  .book-img{
+@media screen and (max-width: 520px) {
+  .book-img {
     width: 100%;
+    height: 50%;
   }
-  .book{
+  .book {
     height: 45vh;
   }
-  .buttons{
+  .buttons {
     margin-top: 9%;
     padding-top: 0;
     justify-content: space-around;
     margin-right: 0;
   }
   .book:hover {
-  transform: translateY(-10px);
-}
+    transform: translateY(-10px);
+  }
+  #book-cover {
+    width: 60%;
+  }
 }
