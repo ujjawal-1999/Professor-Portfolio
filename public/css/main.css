@@ -6,7 +6,11 @@
 body {
   margin: 0 auto;
   font-family: "Fjalla One", sans-serif;
-  background-color: #070707;
+  outline: none !important;
+  /* background-color: #070707; */
+}
+input{
+  outline: none !important;
 }
 html {
   scroll-behavior: smooth;
@@ -232,7 +236,7 @@ h2 {
 /* Media Query for Desktop */
 @media (min-width: 1024px) {
   body {
-    background-color: #070707;
+    /* background-color: #070707; */
     font-family: "Fjalla One", sans-serif;
   }
   .name {

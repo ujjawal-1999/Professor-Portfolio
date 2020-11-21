@@ -7,9 +7,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link rel="stylesheet" href="../public/css/main.css" />
-    <link rel="stylesheet" href="../public/css/books.css" />
-    <link rel="stylesheet" href="../public/css/modal.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/books.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
     <link rel="icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Mono:700|Raleway:100"
@@ -20,8 +20,8 @@
     <!-- Modals -->
     <!-- New Book Form -->
     <div class="form-container" id="NewBook">
-      <form id="form" action="" method="post">
-        <a href="">Back</a>
+      <form id="form" action="/admin/upload/book" method="post" enctype="multipart/form-data">
+        <button onclick="hideModal('NewBook')"><a href="/admin/profile/books">Back</a></button>
         <h3>Add A Book</h3>
         <h4>Please enter Book name</h4>
         <fieldset>
@@ -29,13 +29,18 @@
             type="text"
             placeholder="Book Name"
             tabindex="1"
+            name = "name"
             required
             autofocus
           />
         </fieldset>
+        <h4>Please upload Cover Image</h4>
+        <fieldset>
+          <input type="file" name="cover" tabindex="1" required autofocus />
+        </fieldset>
         <h4>Please upload Book</h4>
         <fieldset>
-          <input type="file" tabindex="1" required autofocus />
+          <input type="file" name="book" tabindex="1" required autofocus />
         </fieldset>
         <button
           name="submit"
@@ -50,8 +55,8 @@
     <!--End of  New Book Form -->
     <!-- Edit Book Form -->
     <div class="form-container" id="EditBook">
-      <form id="form" action="" method="post">
-        <a href="">Back</a>
+      <form id="form" class="editForm" method="post" enctype="multipart/form-data">
+        <button onclick="hideModal('EditBook')"><a href="/admin/profile/books">Back</a></button>
         <h3>Book Name</h3>
         <h4>Please enter new Book name</h4>
         <fieldset>
@@ -59,9 +64,17 @@
             type="text"
             placeholder="Book Name"
             tabindex="1"
+            name="name"
             required
             autofocus
           />
+        </fieldset>
+        <fieldset>
+          <input type="file" name="cover" tabindex="1" required autofocus />
+        </fieldset>
+        <h4>Please upload Book</h4>
+        <fieldset>
+          <input type="file" name="book" tabindex="1" required autofocus />
         </fieldset>
         <button
           name="submit"
@@ -71,58 +84,46 @@
         >
           Update
         </button>
-        <button
-          name="submit"
-          type="submit"
-          id="contact-submit"
-          data-submit="...Sending"
-        >
-          Delete
-        </button>
       </form>
     </div>
     <!-- Edit Book FormEnd of Edit Book Form -->
     <!-- End of Modals -->
+    <header class="main-header" id="home">
+      <nav class="header-container clearfix">
+        <ul class="main-nav">
+          <li><a class="link1" href="/">Home</a></li>
+          <li><a class="link2" href="/admin/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
     <div class="main" id="portfolio">
       <section class="books-grid main">
         <button class="add-book" onclick="addbooks()">Add Books</button>
         <div class="books">
+        <% books.forEach((book)=>{ %>
           <div class="book">
             <div class="book-img">
-              <img id="book-cover" src="../public/images/book1.jpg" />
+              <a href="<%= book.book %>" download>
+              <img id="book-cover" src="<%= book.cover %>" />
+            </a>
             </div>
             <div class="book-name">
-              <h4 class="b-name">The End of Me</h4>
+              <h4 class="b-name"><%= book.name %></h4>
             </div>
             <div class="buttons">
               <div class="button">
-                <button class="edit-book" onclick="editbook()">Edit</button>
+                <button class="edit-book" onclick="editbook(`<%= book._id %>`)">Edit</button>
               </div>
               <div class="button">
-                <button class="edit-book">Delete</button>
+                <button class="edit-book" onclick="location.href='/admin/book/delete/<%= book._id %>'">Delete</button>
               </div>
             </div>
           </div>
-          <div class="book">
-            <div class="book-img">
-              <img id="book-cover" src="../public/images/book2.jpeg" />
-            </div>
-            <div class="book-name">
-              <h4 class="b-name">The Book of Mormon</h4>
-            </div>
-            <div class="buttons">
-              <div class="button">
-                <button class="edit-book" onclick="editbook()">Edit</button>
-              </div>
-              <div class="button">
-                <button class="edit-book">Delete</button>
-              </div>
-            </div>
-          </div>
+        <% }) %>
         </div>
       </section>
     </div>
-  <script src="../src/js/modal.js"></script>
+  <script src="/js/modal.js"></script>
   </body>
 
 </html>

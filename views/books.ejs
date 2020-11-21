@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>Professor's Book</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/books.css" />
+  <link rel="stylesheet" href="/css/modal.css" />
+  <link rel="icon" href="favicon.ico" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto+Mono:700|Raleway:100"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <header class="main-header" id="home">
+    <nav class="header-container clearfix">
+      <ul class="main-nav">
+        <!-- <li><a class="link1" href="#home">Home</a></li> -->
+        <li><a class="link2" href="/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="main" id="portfolio">
+    <section class="books-grid main">
+      <div class="books">
+        <% books.forEach((book)=>{ %>
+          <div class="book">
+            <div class="book-img">
+              <a href="<%= book.book %>" download>
+              <img id="book-cover" src="<%= book.cover %>" />
+            </a>
+            </div>
+            <div class="book-name">
+              <h4 class="b-name"><%= book.name %></h4>
+            </div>
+            <div class="buttons">
+              <div class="view-btn button">
+                <a class="button-style" href="<%= book.book %>" target="__blank"><p>View</p></a>
+              </div>
+              <div class="dl-btn button">
+                <a class="button-style" href="<%= book.book %>" download=""><p>Download</p></a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </div>
+</body>

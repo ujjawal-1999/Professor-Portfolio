@@ -53,13 +53,11 @@ app.use((req, res, next) => {
 
 //Setup for rendering static pages
 const publicDirectory = path.join(__dirname, "../public");
-// console.log(publicDirectory);
 app.use(express.static(publicDirectory));
 
 //Routes
 const indexRoutes = require("./routes/index");
 const adminRoutes = require("./routes/admin");
-const Admin = require("./models/Admin");
 
 app.use("/", indexRoutes);
 app.use("/admin", adminRoutes);
@@ -70,12 +68,16 @@ app.listen(PORT, () => {
 });
 
 // const Admin = require('./models/Admin');
-
+// const Book = require('./models/Book');
 // const f = async()=>{
-//     const newUser = await new Admin({
-//       username: 'ujjawal-1999',
-//       password: 'ujjawal1999'
-//     }).save();
-//     console.log(newUser);
+//     const books = await Book.find();
+//     books.forEach(async(book)=>{
+
+//     })
+    // const newUser = await new Admin({
+    //   username: 'ujjawal-1999',
+    //   password: 'ujjawal1999'
+    // }).save();
+    // console.log(newUser);
 // }
 // f();

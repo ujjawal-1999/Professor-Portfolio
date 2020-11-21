@@ -10,7 +10,7 @@ const Admin = require("../models/Admin");
 const bcrypt = require("bcryptjs");
 
 router.get("/login", async (req, res) => {
-  res.render("login");
+  res.render("admin-login");
 });
 
 router.post("/login", async (req, res) => {
@@ -20,12 +20,12 @@ router.post("/login", async (req, res) => {
     const foundAdmin = await Admin.findOne({ username });
     if (!foundAdmin) {
       req.flash("error_msg", "Invalid Credentials");
-      return res.status(401).send("Invalid Credentials");
+      res.redirect('/admin/login');
     }
     const checkPassword = await bcrypt.compare(password, foundAdmin.password);
     if (!checkPassword) {
       req.flash("error_msg", "Invalid Login Credentials");
-      return;
+      res.redirect('/admin/login');
     }
     const token = jwt.sign(
       {
@@ -37,10 +37,11 @@ router.post("/login", async (req, res) => {
     res.cookie("authorization", token, {
       httpOnly: false,
     });
-    res.send("Logged in");
+    res.redirect('/admin/profile/books');
   } catch (error) {
-    // console.log(error)
-    res.status(500).send(error);
+    console.log(error)
+    res.redirect('/admin/login');
+    // res.status(500).send(error);
   }
 });
 
@@ -50,8 +51,12 @@ router.get("/logout", async (req, res) => {
   res.redirect("/admin/login");
 });
 
-router.get("/test", adminAuth, async (req, res) => {
-  res.render("test");
+router.get("/profile/books", adminAuth, async (req, res) => {
+  const books = await Book.find().sort([['updatedAt', -1]]);
+  // console.log(books);
+  res.render("books-admin",{
+    books
+  });
 });
 
 //Establish Storage for file upload
@@ -144,11 +149,11 @@ router.post("/upload/book", adminAuth, cpUpload, async (req, res, error) => {
     }).save();
     if (!savedBook) {
       req.flash("error_msg", "Error uploading new book. Try again");
-      res.send("Error");
+      res.redirect('/admin/profile/books')
     }
     console.log(savedBook);
     req.flash("success_msg", "Book successfully uploaded");
-    res.send("Success");
+    res.redirect('/admin/profile/books')
   } catch (err) {
     console.error(err);
   }
@@ -162,16 +167,16 @@ router.get("/book/delete/:id", adminAuth, async (req, res) => {
     if (deletedBook) {
       await findBook.remove();
       req.flash("success_msg", "Book Deleted Successfully");
-      res.send("Deleted");
+      res.redirect('/admin/profile/books')
     } else {
       req.flash("error_msg", "Unable to delete book");
-      res.send("Not Deleted");
+      res.redirect('/admin/profile/books')
     }
   } catch (err) {
     console.error(err);
     req.flash("error_msg", "Unable to delete the book");
     // res.redirect('/admin');
-    res.send("Error", err);
+    res.redirect('/admin/profile/books')
   }
 });
 
@@ -184,7 +189,7 @@ router.post("/book/edit/:id", adminAuth, cpUpload, async (req, res, error) => {
       await findBook.remove();
     } else {
       req.flash("error_msg", "Unable to update book");
-      res.send("Deleted");
+      res.redirect('/admin/profile/books')
     }
     const { name, description } = req.body;
     let cover, book;
@@ -199,182 +204,183 @@ router.post("/book/edit/:id", adminAuth, cpUpload, async (req, res, error) => {
     }).save();
     if (!savedBook) {
       req.flash("error_msg", "Error uploading new book. Try again");
-      res.send("Error");
+      res.redirect('/admin/profile/books')
     }
     console.log(savedBook);
     req.flash("success_msg", "Book successfully uploaded");
-    res.send("Success");
+    res.redirect('/admin/profile/books')
   } catch (err) {
     console.error(err);
+    res.redirect('/admin/profile/books')
   }
 });
 
-// Profile Picture Update Option
-const storageProfile = multer.diskStorage({
-  destination: async function (req, file, cb) {
-    let newDestination;
-    newDestination = __dirname + `/../../public/upload/Profile`;
-    var stat = null;
-    try {
-      stat = fs.statSync(newDestination);
-    } catch (err) {
-      fs.mkdir(
-        newDestination,
-        {
-          recursive: true,
-        },
-        (err) => {
-          if (err) console.error("New Directory Error: ", err.message);
-          else console.log("New Directory Success");
-        }
-      );
-    }
-    if (stat && !stat.isDirectory())
-      throw new Error("Directory Couldn't be created");
-    await cb(null, newDestination);
-  },
-  filename: async function (req, file, cb) {
-    const imageFileTypes = /jpeg|jpg|png|gif/;
-    let fileName =
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname);
-    await cb(null, fileName);
-  },
-});
+// // Profile Picture Update Option
+// const storageProfile = multer.diskStorage({
+//   destination: async function (req, file, cb) {
+//     let newDestination;
+//     newDestination = __dirname + `/../../public/upload/Profile`;
+//     var stat = null;
+//     try {
+//       stat = fs.statSync(newDestination);
+//     } catch (err) {
+//       fs.mkdir(
+//         newDestination,
+//         {
+//           recursive: true,
+//         },
+//         (err) => {
+//           if (err) console.error("New Directory Error: ", err.message);
+//           else console.log("New Directory Success");
+//         }
+//       );
+//     }
+//     if (stat && !stat.isDirectory())
+//       throw new Error("Directory Couldn't be created");
+//     await cb(null, newDestination);
+//   },
+//   filename: async function (req, file, cb) {
+//     const imageFileTypes = /jpeg|jpg|png|gif/;
+//     let fileName =
+//       file.fieldname + "-" + Date.now() + path.extname(file.originalname);
+//     await cb(null, fileName);
+//   },
+// });
 
-var uploadProfile = multer({
-  storage: storageProfile,
-  limits: {
-    fileSize: 20000000,
-  },
-  fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/jpeg"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-    }
-  },
-});
+// var uploadProfile = multer({
+//   storage: storageProfile,
+//   limits: {
+//     fileSize: 20000000,
+//   },
+//   fileFilter: (req, file, cb) => {
+//     if (
+//       file.mimetype === "image/png" ||
+//       file.mimetype === "image/jpg" ||
+//       file.mimetype === "image/jpeg"
+//     ) {
+//       cb(null, true);
+//     } else {
+//       cb(null, false);
+//     }
+//   },
+// });
 
-// Route to upload a image
-router.post(
-  "/upload/profile-image",
-  adminAuth,
-  uploadProfile.single("image"),
-  async (req, res, error) => {
-    try {
-      const file = req.file;
-      let image = `/upload/Profile/${file.filename}`;
-      const user = req.user;
-      user.image = image;
-      await user.save();
-      if (!user) {
-        req.flash("error_msg", "Error uploading new image. Try again");
-        res.send("Error");
-      }
-      console.log(user);
-      req.flash("success_msg", "Image successfully uploaded");
-      res.send("Success");
-    } catch (err) {
-      console.error(err);
-    }
-  }
-);
+// // Route to upload a image
+// router.post(
+//   "/upload/profile-image",
+//   adminAuth,
+//   uploadProfile.single("image"),
+//   async (req, res, error) => {
+//     try {
+//       const file = req.file;
+//       let image = `/upload/Profile/${file.filename}`;
+//       const user = req.user;
+//       user.image = image;
+//       await user.save();
+//       if (!user) {
+//         req.flash("error_msg", "Error uploading new image. Try again");
+//         res.send("Error");
+//       }
+//       console.log(user);
+//       req.flash("success_msg", "Image successfully uploaded");
+//       res.send("Success");
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
+// );
 
-// Route to edit Login Credentials
-router.post("/edit/credentials", adminAuth, async (req, res, error) => {
-  try {
-    const { username, password } = req.body;
-    const user = req.user;
-    if (username) user.username = username;
-    const salt = await bcrypt.genSalt();
-    if (password) user.password = await bcrypt.hash(password, salt);
-    await user.save();
-    if (!user) {
-      req.flash("error_msg", "Error editing credentials. Try again");
-      res.send("Error");
-    }
-    console.log(user);
-    req.flash("success_msg", "Credentials edited successfully");
-    res.send("Success");
-  } catch (err) {
-    console.error(err);
-  }
-});
+// // Route to edit Login Credentials
+// router.post("/edit/credentials", adminAuth, async (req, res, error) => {
+//   try {
+//     const { username, password } = req.body;
+//     const user = req.user;
+//     if (username) user.username = username;
+//     const salt = await bcrypt.genSalt();
+//     if (password) user.password = await bcrypt.hash(password, salt);
+//     await user.save();
+//     if (!user) {
+//       req.flash("error_msg", "Error editing credentials. Try again");
+//       res.send("Error");
+//     }
+//     console.log(user);
+//     req.flash("success_msg", "Credentials edited successfully");
+//     res.send("Success");
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-// Edit Personal Details
-router.post("/edit/details", adminAuth, async (req, res, error) => {
-  try {
-    const { name, description } = req.body;
-    const user = req.user;
-    if (name) user.name = name;
-    if (description) user.description = description;
-    await user.save();
-    if (!user) {
-      req.flash("error_msg", "Error editing details. Try again");
-      res.send("Error");
-    }
-    console.log(user);
-    req.flash("success_msg", "Details edited successfully");
-    res.send("Success");
-  } catch (err) {
-    console.error(err);
-  }
-});
+// // Edit Personal Details
+// router.post("/edit/details", adminAuth, async (req, res, error) => {
+//   try {
+//     const { name, description } = req.body;
+//     const user = req.user;
+//     if (name) user.name = name;
+//     if (description) user.description = description;
+//     await user.save();
+//     if (!user) {
+//       req.flash("error_msg", "Error editing details. Try again");
+//       res.send("Error");
+//     }
+//     console.log(user);
+//     req.flash("success_msg", "Details edited successfully");
+//     res.send("Success");
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-// Add new Experience Details
-router.post("/add/experience/", adminAuth, async (req, res, error) => {
-  try {
-    const user = req.user;
-    const { title, description } = req.body;
-    const newDetails = { title, description };
-    user.details.push(newDetails);
-    await user.save();
-    req.flash("success", "A section has been removed");
-    res.redirect(req.get("referer"));
-  } catch (err) {
-    console.error(err);
-  }
-});
+// // Add new Experience Details
+// router.post("/add/experience/", adminAuth, async (req, res, error) => {
+//   try {
+//     const user = req.user;
+//     const { title, description } = req.body;
+//     const newDetails = { title, description };
+//     user.details.push(newDetails);
+//     await user.save();
+//     req.flash("success", "A section has been removed");
+//     res.redirect(req.get("referer"));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-// Delete Experience Details
-router.get("/delete/experience/:id", adminAuth, async (req, res, error) => {
-  try {
-    const user = req.user;
-    user.details = user.details.filter(
-      (detail) => !detail._id.equals(req.params.id)
-    );
-    await user.save();
-    req.flash("success", "A section has been removed");
-    res.redirect(req.get("referer"));
-  } catch (err) {
-    console.error(err);
-  }
-});
+// // Delete Experience Details
+// router.get("/delete/experience/:id", adminAuth, async (req, res, error) => {
+//   try {
+//     const user = req.user;
+//     user.details = user.details.filter(
+//       (detail) => !detail._id.equals(req.params.id)
+//     );
+//     await user.save();
+//     req.flash("success", "A section has been removed");
+//     res.redirect(req.get("referer"));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-// Edit Contact Details
-router.post("/edit/contact", adminAuth, async (req, res, error) => {
-  try {
-    const { email, phone, facebook, linkedin } = req.body;
-    const user = req.user;
-    if (email) user.contact.email = email;
-    if (phone) user.contact.phone = phone;
-    if (facebook) user.contact.facebook = facebook;
-    if (linkedin) user.contact.linkedin = linkedin;
-    await user.save();
-    if (!user) {
-      req.flash("error_msg", "Error editing details. Try again");
-      res.send("Error");
-    }
-    console.log(user);
-    req.flash("success_msg", "Details edited successfully");
-    res.send("Success");
-  } catch (err) {
-    console.error(err);
-  }
-});
+// // Edit Contact Details
+// router.post("/edit/contact", adminAuth, async (req, res, error) => {
+//   try {
+//     const { email, phone, facebook, linkedin } = req.body;
+//     const user = req.user;
+//     if (email) user.contact.email = email;
+//     if (phone) user.contact.phone = phone;
+//     if (facebook) user.contact.facebook = facebook;
+//     if (linkedin) user.contact.linkedin = linkedin;
+//     await user.save();
+//     if (!user) {
+//       req.flash("error_msg", "Error editing details. Try again");
+//       res.send("Error");
+//     }
+//     console.log(user);
+//     req.flash("success_msg", "Details edited successfully");
+//     res.send("Success");
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
 module.exports = router;

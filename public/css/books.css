@@ -10,6 +10,11 @@ a:link {
 @media (max-width: 800px) {
   
 }
+.button-style{
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
 
 .books {
   position: relative;
@@ -80,7 +85,13 @@ a:link {
   overflow: hidden;
   object-fit: cover;
   float: left;
-  width: 28%;
+  width: 30%;
+  /* height: 95%; */
+}
+@media screen and (min-width : 768px){
+  .book-img{
+    height: 95%;
+  }
 }
 
 .book-name {
@@ -106,26 +117,30 @@ p {
   padding-bottom: 20px;
   display: flex;
       justify-content: space-between;
-    margin-top: 17%;
-    margin-right: 47%;
+    margin-top: 12%;
+    margin-right: 45%;
 }
 
 .button {
   overflow: hidden;
+  background: blueviolet;
+  padding : 10px 20px;
 }
 
 .add-book {
   text-decoration: none;
-  color: #87f5fb;
-  cursor: pointer;
-  background-color: #070707;
-  border: 0;
-  font-size: 1.3rem;
+    color: black;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    border: 0;
+    font-size: 1.3rem;
 }
 .edit-book {
   text-decoration: none;
-  color: blue;
+  color: white;
   cursor: pointer;
+  background-color: blueviolet;
   border: 0;
   font-size: 1.3rem;
 }
@@ -153,7 +168,7 @@ p {
     margin: 0;
     margin-top: 15vh;
     padding: 0;
-    background-color: #070707;
+    /* background-color: #070707; */
   }
   .books-grid {
     margin-top: 20px;
