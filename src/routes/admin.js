@@ -136,14 +136,14 @@ var cpUpload = upload.fields([
 // Route to upload a Book
 router.post("/upload/book", adminAuth, cpUpload, async (req, res, error) => {
   try {
-    const { name, description } = req.body;
+    const { name, author } = req.body;
     let cover, book;
     const files = req.files;
     if (files.cover) cover = `/upload/Cover/${name}/${files.cover[0].filename}`;
     if (files.book) book = `/upload/Book/${name}/${files.book[0].filename}`;
     const savedBook = await new Book({
       name,
-      description,
+      author,
       cover,
       book,
     }).save();
@@ -191,14 +191,14 @@ router.post("/book/edit/:id", adminAuth, cpUpload, async (req, res, error) => {
       req.flash("error_msg", "Unable to update book");
       res.redirect('/admin/profile/books')
     }
-    const { name, description } = req.body;
+    const { name, author } = req.body;
     let cover, book;
     const files = req.files;
     if (files.cover) cover = `/upload/Cover/${name}/${files.cover[0].filename}`;
     if (files.book) book = `/upload/Book/${name}/${files.book[0].filename}`;
     const savedBook = await new Book({
       name,
-      description,
+      author,
       cover,
       book,
     }).save();

@@ -34,6 +34,16 @@
             autofocus
           />
         </fieldset>
+        <fieldset>
+          <input
+            type="text"
+            placeholder="Author Name"
+            tabindex="1"
+            name = "author"
+            required
+            autofocus
+          />
+        </fieldset>
         <h4>Please upload Cover Image</h4>
         <fieldset>
           <input type="file" name="cover" tabindex="1" required autofocus />
@@ -65,6 +75,16 @@
             placeholder="Book Name"
             tabindex="1"
             name="name"
+            required
+            autofocus
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            type="text"
+            placeholder="Author Name"
+            tabindex="1"
+            name = "author"
             required
             autofocus
           />
@@ -111,6 +131,9 @@
             </div>
             <div class="book-name">
               <h4 class="b-name"><%= book.name %></h4>
+            </div>
+            <div class="book-name">
+              <h4 class="b-name"><%= book.author %></h4>
             </div>
             <div class="buttons">
               <div class="button">
