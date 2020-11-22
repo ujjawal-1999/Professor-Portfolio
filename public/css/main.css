@@ -287,7 +287,8 @@ h2 {
     clear: both;
   }
   .main-header {
-    padding-top: 34px;
+    padding-top: 1%;
+    padding-bottom: 1%;
     padding-left: 5%;
   }
   .profile-picture {
@@ -299,7 +300,7 @@ h2 {
     margin: 0 auto;
   }
   .header-container {
-    width: 80%;
+    /* width: 80%; */
     margin: 0 auto;
     position: relative;
   }
@@ -361,14 +362,22 @@ h2 {
   }
   .site-name {
   color: #87f5fb;
-  width: 30%;
-  margin-left: 27%;
+  width: auto;
+  margin-left: 7%;
   margin-right: auto;
-  padding-top: 1%;
+  padding-top: 1%%;
   float: left;
   font-size: 256%;
   letter-spacing: 0.7rem;
 }
+}
+
+@media screen and (max-width:1024px) and (min-width:768px)
+{
+  .site-name{
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width:768px)
