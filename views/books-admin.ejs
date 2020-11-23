@@ -20,8 +20,15 @@
     <!-- Modals -->
     <!-- New Book Form -->
     <div class="form-container" id="NewBook">
-      <form id="form" action="/admin/upload/book" method="post" enctype="multipart/form-data">
-        <button onclick="hideModal('NewBook')"><a href="/admin/profile/books">Back</a></button>
+      <form
+        id="form"
+        action="/admin/upload/book"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <button onclick="hideModal('NewBook')">
+          <a href="/admin/profile/books">Back</a>
+        </button>
         <h3>Add A Book</h3>
         <h4>Please enter Book name</h4>
         <fieldset>
@@ -29,7 +36,7 @@
             type="text"
             placeholder="Book Name"
             tabindex="1"
-            name = "name"
+            name="name"
             required
             autofocus
           />
@@ -39,7 +46,7 @@
             type="text"
             placeholder="Author Name"
             tabindex="1"
-            name = "author"
+            name="author"
             required
             autofocus
           />
@@ -65,8 +72,15 @@
     <!--End of  New Book Form -->
     <!-- Edit Book Form -->
     <div class="form-container" id="EditBook">
-      <form id="form" class="editForm" method="post" enctype="multipart/form-data">
-        <button onclick="hideModal('EditBook')"><a href="/admin/profile/books">Back</a></button>
+      <form
+        id="form"
+        class="editForm"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <button onclick="hideModal('EditBook')">
+          <a href="/admin/profile/books">Back</a>
+        </button>
         <h3>Book Name</h3>
         <h4>Please enter new Book name</h4>
         <fieldset>
@@ -84,8 +98,7 @@
             type="text"
             placeholder="Author Name"
             tabindex="1"
-            name = "author"
-            required
+            name="author"
             autofocus
           />
         </fieldset>
@@ -109,7 +122,9 @@
     <!-- Edit Book FormEnd of Edit Book Form -->
     <!-- End of Modals -->
     <header class="main-header" id="home">
-      <div class="logo"><img src="../public/images/dummy-logo.jpg" alt=""></div>
+      <div class="logo">
+        <img src="../public/images/dummy-logo.jpg" alt="" />
+      </div>
       <nav class="header-container clearfix">
         <div class="site-name">AstroBooks</div>
         <ul class="main-nav">
@@ -122,33 +137,50 @@
       <section class="books-grid main">
         <button class="add-book" onclick="addbooks()">Add Books</button>
         <div class="books">
-        <% books.forEach((book)=>{ %>
+          <% books.forEach((book)=>{ %>
           <div class="book">
             <div class="book-img">
               <a href="<%= book.book %>" download>
-              <img id="book-cover" src="<%= book.cover %>" />
-            </a>
+                <img id="book-cover" src="<%= book.cover %>" />
+              </a>
             </div>
             <div class="book-name">
               <h4 class="b-name"><%= book.name %></h4>
-            </div>
-            <div class="book-name">
-              <h4 class="b-name"><%= book.author %></h4>
+              <!-- <br> -->
+              <!-- <br> -->
+              <% if(book.author) { %>
+                <h4 class="a-name">
+                  <span style="font-weight: bold; font-family: sans-serif"
+                    >Author: </span
+                  ><%= book.author %>
+                </h4>
+              <% } %> 
             </div>
             <div class="buttons">
               <div class="button">
-                <button class="edit-book" onclick="editbook(`<%= book._id %>`)">Edit</button>
+                <button
+                  class="edit-book"
+                  onclick="editbook(`<%= book._id %>`)"
+                >
+                  Edit
+                </button>
               </div>
               <div class="button">
-                <button class="edit-book" onclick="location.href='/admin/book/delete/<%= book._id %>'">Delete</button>
+                <button
+                  class="edit-book"
+                  onclick="location.href='/admin/book/delete/<%= book._id %>'"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
-        <% }) %>
+          <% }) %>
         </div>
       </section>
     </div>
-  <script src="/js/modal.js"></script>
-  </body>
+    <img src="/backim/2.png" class="book-im" />
 
+    <script src="/js/modal.js"></script>
+  </body>
 </html>

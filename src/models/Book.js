@@ -6,7 +6,6 @@ const {
 const BookSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
     },
     author:{
         type:String
@@ -17,7 +16,6 @@ const BookSchema = new mongoose.Schema({
     },
     book: {
         type: String,
-        required: true
     },
     isDeleted:{
         type:Boolean,

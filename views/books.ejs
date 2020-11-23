@@ -16,43 +16,64 @@
   />
 </head>
 <body>
-
   <header class="main-header" id="home">
-      <div class="logo"><img src="../public/images/dummy-logo.jpg" alt=""></div>
-      <nav class="header-container clearfix">
-        <div class="site-name">AstroBooks</div>
-        <!-- <ul class="main-nav" style="padding-right: 9%;">
+    <div class="logo"><img src="../public/images/dummy-logo.jpg" alt="" /></div>
+    <nav class="header-container clearfix">
+      <div class="site-name">AstroBooks</div>
+      <!-- <ul class="main-nav" style="padding-right: 9%;">
           <li><a class="link1" href="/">Home</a></li>
         </ul> -->
-      </nav>
-    </header>
+    </nav>
+  </header>
   <div class="main" id="portfolio">
     <section class="books-grid main">
       <div class="books">
         <% books.forEach((book)=>{ %>
-          <div class="book">
-            <div class="book-img">
-              <a href="<%= book.book %>" download>
+        <div class="book">
+          <div class="book-img">
+            <a href="<%= book.book %>" download>
               <img id="book-cover" src="<%= book.cover %>" />
             </a>
+          </div>
+          <div class="book-name">
+            <h4 class="b-name"><%= book.name %></h4>
+            <!-- <br> -->
+            <!-- <br> -->
+            <% if(book.author) { %>
+            <h4 class="a-name">
+              <span style="font-weight: bold; font-family: sans-serif"
+                >Author: </span
+              ><%= book.author %>
+            </h4>
+            <% } %>
+          </div>
+          <!-- <br> -->
+
+          <!-- <br> -->
+          <!-- <div class="aut-name">
+              
+              
+            </div> -->
+          <div class="buttons">
+            <div class="view-btn button">
+              <a class="button-style" href="<%= book.book %>" target="__blank"
+                ><p>View</p></a
+              >
             </div>
-            <div class="book-name">
-              <h4 class="b-name"><%= book.name %></h4>
-            </div>
-            <div class="book-name">
-              <h4 class="b-name"><%= book.author %></h4>
-            </div>
-            <div class="buttons">
-              <div class="view-btn button">
-                <a class="button-style" href="<%= book.book %>" target="__blank"><p>View</p></a>
-              </div>
-              <div class="dl-btn button">
-                <a class="button-style" href="<%= book.book %>" download=""><p>Download</p></a>
-              </div>
+            <div class="dl-btn button">
+              <a class="button-style" href="<%= book.book %>" download=""
+                ><p>Download</p></a
+              >
             </div>
           </div>
+        </div>
         <% }) %>
       </div>
     </section>
   </div>
+
+  <img src="backim/2.png" class="book-im" />
+  <!-- <div style="height:00px;width:auto ">
+    <img src="backim/2.png" >
+  </div> -->
 </body>
