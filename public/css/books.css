@@ -57,7 +57,8 @@ a:link {
 .book {
   justify-content: initial;
   align-content: center;
-  height: 36vh;
+  /*height: 36vh;*/
+  height: auto;
   width: 100%;
   max-width: 70%;
   margin: 2em 1em;
@@ -67,7 +68,8 @@ a:link {
   transition: ease 0.5s;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.068);
   background-color: white;
-  padding-top: 1rem;
+  /*padding-top: 1rem;*/
+  padding: 3rem 1rem;
 }
 
 .book:hover {
@@ -82,6 +84,7 @@ a:link {
   object-fit: contain;
   display: inline-block;
   height: 100%;
+  max-height: 300px;
   vertical-align: middle;
   overflow: hidden;
 }
@@ -109,6 +112,7 @@ a:link {
   letter-spacing: 0.09rem;
   font-weight: bold;
   font-size: 2.5rem;
+  margin-bottom:auto;
 }
 
 .aut-name {
@@ -133,13 +137,13 @@ p {
 }
 
 .buttons {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 1%;
   display: flex;
   justify-content: space-between;
-  margin-top: 6%;
   margin-right: 45%;
+  margin-top: 2%;
 }
 
 .button {
