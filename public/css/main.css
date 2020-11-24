@@ -31,7 +31,7 @@ html {
   padding-top: 10px;
   text-align: center;
   background-color: #070707;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
   z-index: -5;
 }
 .name,
@@ -60,7 +60,7 @@ h4,
 .main-nav {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 40px;
+  margin-top: 80px;
   padding-left: 20px;
   overflow: hidden;
 }
@@ -86,7 +86,7 @@ h4,
   color: #87f5fb;
   text-decoration: none;
   font-size: 1.2rem;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.3em;
 }
 .link1:hover,
 .link2:hover,
@@ -198,21 +198,29 @@ h2 {
 
 .site-name {
   color: #87f5fb;
-  width: 30%;
-  margin-left: 27%;
+  /* width: 30%; */
+  margin-left: 20%;
   margin-right: auto;
   padding-top: 1%;
   float: left;
-  font-size: 256%;
-  letter-spacing: 0.07em;
+  font-size: 255%;
+  letter-spacing: 0.08em;
+  font-family: oswald;
 }
+
+
 
 .logo {
   float: left;
-  width: 5%;
+  width: 7%;
   padding-left: 1%;
   height: 80px;
-  background-color: wheat;
+  /* background-color: wheat; */
+  background-image: url('../backim/lo.png');
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-size: cover;
 }
 
 /* Media Query for Tablet */
@@ -224,8 +232,8 @@ h2 {
     background-color: #070707;
   }
   .main-nav {
-    padding-right: 20px;
-    overflow: hidden;
+    float: right;
+    margin-top: 15px;
   }
   .link1:hover,
   .link2:hover,
@@ -397,15 +405,15 @@ h2 {
     color: #87f5fb;
   }
   .site-name {
-  color: #87f5fb;
-  width: auto;
-  margin-left: 7%;
-  margin-right: auto;
-  padding-top: 1%;
-  float: left;
-  font-size: 256%;
-  letter-spacing: 0.07em;
-  font-family: CenturyGothic , sans-serif;
+    color: #87f5fb;
+    width: auto;
+    margin-left: 3%;
+    margin-right: auto;
+    padding-top: 1%;
+    float: left;
+    font-size: 255%;
+    letter-spacing: 0.08em;
+    font-family: oswald , sans-serif;
 }
 }
 
@@ -413,7 +421,8 @@ h2 {
 {
   .site-name{
     margin-left: 0%;
-    width: 100%;
+    /* width: 100%; */
+    font-family: oswald;
   }
 }
 
@@ -438,11 +447,22 @@ h2 {
     text-align: center;
   }
   .site-name{
-    width: 100%;
+    /* width: 100%; */
     margin-left: 2%;
+    font-family: oswald;
   }
   .logo{
-    display: none;
+    float: left;
+    width: 18%;
+    padding-left: 1%;
+    height: 80px;
+    /* background-color: wheat; */
+    background-image: url(../backim/lo.png);
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: cover;
+    margin-left: 3%;
   }
   .header-container{
     padding-top: 5%;
