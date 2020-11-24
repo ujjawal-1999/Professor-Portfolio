@@ -172,15 +172,20 @@ p {
   color: #b7fbf1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-width:520px){
   .book-name {
     float: none;
   }
   .buttons {
-    margin-right: 7%;
+    margin-right: 3%;
+    padding-top: 0;
+    display: block;
+  }
+  .button{
+    margin-bottom: 5px;
   }
   .book {
-    height: 35vh;
+    height: 42vh;
     width: 100%;
   }
   .book-img {
