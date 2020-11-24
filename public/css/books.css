@@ -105,7 +105,7 @@ a:link {
   padding: 10px;
   font-size: 30px;
   overflow: hidden;
-  float: left;
+  /* float: left; */
   letter-spacing: 0.09rem;
   font-weight: bold;
   font-size: 2.5rem;
@@ -138,7 +138,7 @@ p {
   padding-left: 1%;
   display: flex;
   justify-content: space-between;
-  margin-top: 12%;
+  margin-top: 6%;
   margin-right: 45%;
 }
 
