@@ -68,23 +68,11 @@ const storage = multer.diskStorage({
         __dirname + `/../../public/upload/Cover/${req.body.name}`;
     else if (file.fieldname == "book")
       newDestination = __dirname + `/../../public/upload/Book/${req.body.name}`;
-    var stat = null;
-    try {
-      stat = fs.statSync(newDestination);
-    } catch (err) {
-      fs.mkdir(
-        newDestination,
-        {
-          recursive: true,
-        },
-        (err) => {
-          if (err) console.error("New Directory Error: ", err.message);
-          else console.log("New Directory Success");
+    if (!fs.existsSync(newDestination)) {
+            fs.mkdirSync(newDestination, { recursive: true }, (err) => {
+                if (err) console.error('New Directory Creation Error');
+            })
         }
-      );
-    }
-    if (stat && !stat.isDirectory())
-      throw new Error("Directory Couldn't be created");
     await cb(null, newDestination);
   },
   filename: async function (req, file, cb) {
